@@ -14,7 +14,9 @@ pipeline {
         {
             steps
             {
-                bat 'docker-compose up -d'
+                dir('tests') {
+                    bat 'docker-compose up -d'
+                }
             }
         }
     }
