@@ -24,7 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('tests') {
-                    sh 'python e2e.py'
+                    bat 'python e2e.py'
                 }
             }
         }
