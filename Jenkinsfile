@@ -21,10 +21,24 @@ pipeline {
 
             }
         }
-        stage('Test') {
-            steps {
-                dir('tests') {
+        stage('Test')
+        {
+            steps
+            {
+                dir('tests')
+                {
                     bat 'python e2e.py'
+                }
+            }
+        }
+        stage('Finalize')
+        {
+            steps
+            {
+                dir('tests')
+                {
+                    bat 'docker-compose down'
+                    bat 'docker-compose push'
                 }
             }
         }
