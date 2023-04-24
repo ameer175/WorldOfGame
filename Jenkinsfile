@@ -7,17 +7,24 @@ pipeline {
         {
             steps
             {
-                dir('tests') {
-                    bat 'docker-compose build'
-                }
+
+                bat 'docker-compose build'
+
             }
         }
         stage('Run docker-compose')
         {
             steps
             {
+
+                bat 'docker-compose up -d'
+
+            }
+        }
+        stage('Test') {
+            steps {
                 dir('tests') {
-                    bat 'docker-compose up -d'
+                    sh 'python e2e.py'
                 }
             }
         }
